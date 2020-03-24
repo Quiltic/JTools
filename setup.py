@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
      name='JTools',  
      version='1.1',
-     scripts=['__init__','UsefullSnipits','TimeTools','MathTools','FileTools'] ,
+     scripts=['__init__.py','UsefullSnipits.py','TimeTools.py','MathTools.py','FileTools.py'] ,
      author="Joshua Zack",
      author_email="jbot237@gmail.com",
      description="Mysc Usfull tools",
