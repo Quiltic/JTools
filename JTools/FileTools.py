@@ -55,7 +55,8 @@ def CompressDict(dic):
             child = SubElement(top, 'list', name = part)
             child.extend(CompressList(dic[part]))
         elif type(dic[part]) != dict:
-            child = SubElement(top, str(type(dic[part])).replace("<class '",'').replace("'>",''), name = part,  val = str(dic[part])) # Basicly this just gets the type for its name and makes an element with it
+            data = str(dic[part]).replace('’',"'").replace('•','*').replace('–','-') # heavy cleanup
+            child = SubElement(top, str(type(dic[part])).replace("<class '",'').replace("'>",''), name = part,  val = data) # Basicly this just gets the type for its name and makes an element with it
         else: # makes a new compression for this type
             child = SubElement(top, 'dict', name = part)
             child.extend(CompressDict(dic[part]))

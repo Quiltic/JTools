@@ -50,3 +50,35 @@ def braketsSplitter(equ):
         
     return(pairs)
 
+
+#
+def flattenList(lst):
+    '''
+    Given lst flatten it into one array
+    flattenList([12,[4,3],[[1,2],1]]) : gives [12, 4, 3, 1, 2, 1]
+    '''
+    out = []
+    for a in lst:
+        if type(a) == list:
+            out += flattenList(a)
+        else:
+            out.append(a)
+    return(out)
+
+
+#
+def cutUp(string, lst):
+    '''
+    Givin a string cut it up at locations in lst
+    cutUp('hi',[1]) : gives ['h','i']
+    '''
+    lst = [0] + lst + [len(string)] # to get the begining and end
+    new = [string[lst[a-1]:lst[a]] for a in range(1,len(lst))] # split it up
+
+    if new[0] == '': # when the first val of lst was also a 0 (lst origin == [0,3] then it would be [0,0,...])
+        new = new[1:] # remove '' made by this
+
+    if new[-1] == '': # when the last val of lst was also a max len (lst origin == [0,3] then it would be [...,3,3])
+        new = new[:-1] # remove '' made by this
+
+    return(new)
