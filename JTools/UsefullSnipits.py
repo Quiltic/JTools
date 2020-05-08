@@ -67,7 +67,7 @@ def flattenList(lst):
 
 
 #
-def cutUp(string, lst):
+def cutUpString(string, lst):
     '''
     Givin a string cut it up at locations in lst
     cutUp('hi',[1]) : gives ['h','i']
