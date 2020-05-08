@@ -1,6 +1,10 @@
 # JTools
 All of my usefull tools in one nice package
 
+To install:
+pip install git+https://github.com/Quiltic/JTools.git
+
+
 Currently The main section is Called JTools this version is for python.
  - It contains a few things with more on the way.
     - File(PATH)
