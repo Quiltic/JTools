@@ -1,4 +1,9 @@
 from JTools.FileTools import *
+from JTools.MathTools import *
+from JTools.TimeTools import *
+from JTools.UsefullSnipits import *
+
+"""
 #https://realpython.com/absolute-vs-relative-python-imports/
 path = __file__[:-11]
 
@@ -17,5 +22,5 @@ for file in p.files:
             #print('from .{} import *'.format(file))
             exec('from JTools.{} import *'.format(file)) # file that gets imported
 
-
+"""
   

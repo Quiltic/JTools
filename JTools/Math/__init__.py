@@ -1,4 +1,4 @@
-from FileTools import *
+from JTools import *
 #https://realpython.com/absolute-vs-relative-python-imports/
 path = __file__[:-11]
 
