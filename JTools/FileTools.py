@@ -32,7 +32,7 @@ def CompressList(lst):
         if type(a) == dict: # makes a new compression for this type
             liststuff.append(CompressDict(a))
         elif type(a) != list:
-            liststuff.append(Element(str(type(a)).replace("<class '",'').replace("'>",'').encode("UTF-8"), val=str(a))) # Basicly this just gets the type for its name and makes an element with it
+            liststuff.append(Element(str(type(a)).replace("<class '",'').replace("'>",''), val=str(a))) # Basicly this just gets the type for its name and makes an element with it
         else: # makes a new compression for this type
             liststuff.append(CompressList(a))
     child.extend(liststuff) # adds the list to the base thing
@@ -56,7 +56,7 @@ def CompressDict(dic):
             child.extend(CompressList(dic[part]))
         elif type(dic[part]) != dict:
             data = str(dic[part]).replace('’',"'").replace('•','*').replace('–','-') # heavy cleanup
-            child = SubElement(top, str(type(dic[part])).replace("<class '",'').replace("'>",'').encode("UTF-8"), name = part,  val = data) # Basicly this just gets the type for its name and makes an element with it
+            child = SubElement(top, str(type(dic[part])).replace("<class '",'').replace("'>",''), name = part,  val = data) # Basicly this just gets the type for its name and makes an element with it
         else: # makes a new compression for this type
             child = SubElement(top, 'dict', name = part)
             child.extend(CompressDict(dic[part]))
