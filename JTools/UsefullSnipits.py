@@ -1,7 +1,18 @@
 capaalfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' # capitals for use in knowing what is a element
 loweralfabet = 'abcdefghijklmnopqrstuvwxyz' # lowers for use in knowing what is a element
-alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 numbers = '1234567890' # numbers
+
+
+# this is a faster way to use the dictionary
+dictionary = {}
+for a in open('DictionaryLines.txt','r').readlines(): # main list
+    lst = a.split(':!!:') # achual stuffs
+    if len(lst) > 1:
+        dictionary[lst[0]] = [lst[1],lst[2][:-1]] # this overrights iself alot 
+#dictionary = Load('Dictionary')
+
+
 
 # Use this for find_all
 def find_all(string,find):
@@ -82,3 +93,32 @@ def cutUpString(string, lst):
         new = new[:-1] # remove '' made by this
 
     return(new)
+
+
+def spell_check_helper(word):
+    ''' 
+    This is used to help the achual spell check. 
+    Gives a list of posable words that could be the word.
+    Shamelessy stolen from http://norvig.com/spell-correct.html
+    '''
+    splits     = [(word[:i], word[i:]) for i in range(len(word) + 1)]
+    deletes    = [a + b[1:] for a, b in splits if b]
+    transposes = [a + b[1] + b[0] + b[2:] for a, b in splits if len(b)>1]
+    replaces   = [a + c + b[1:] for a, b in splits for c in alphabet if b]
+    inserts    = [a + c + b     for a, b in splits for c in alphabet]
+    return set(deletes + transposes + replaces + inserts)
+
+
+
+def spellCheck(word):
+    '''
+    This is used to give the spell checked word.
+    Literaly a spell checker
+    '''
+    #stuff = spell_check_helper(word)
+    for pos in spell_check_helper(word):
+        try:
+            dictionary[pos.capitalize()] # we have a match
+            return(pos.lower())
+        except:
+            pass
