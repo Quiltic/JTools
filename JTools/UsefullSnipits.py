@@ -22,9 +22,13 @@ elif platform == "win32":
 
 
 
+import pathlib
+place = pathlib.Path(__file__).parent.absolute()
+
+
 # this is a faster way to use the dictionary
 dictionary = {}
-for a in open(f'JTools{FilesType}DictionaryLines.txt','r').readlines(): # main list
+for a in open(f'{place}{FilesType}DictionaryLines.txt','r').readlines(): # main list
     lst = a.split(':!!:') # achual stuffs
     if len(lst) > 1:
         dictionary[lst[0]] = [lst[1],lst[2][:-1]] # this overrights iself alot 
