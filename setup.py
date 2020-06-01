@@ -13,7 +13,7 @@ setuptools.setup(
     
     url="https://github.com/Quiltic/JTools",
     packages=setuptools.find_packages(),
-    package_data={'',['DictionaryLines.txt']}
+    package_data={'',['DictionaryLines.txt']},
     include_package_data = True,
     
     classifiers=[
