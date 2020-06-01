@@ -4,9 +4,27 @@ alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 numbers = '1234567890' # numbers
 
 
+""" This is to know if I am on the pi or laptop """
+from sys import platform
+if platform == "linux" or platform == "linux2":
+    # linux
+    #print('Using Linux')
+    FilesType = '//'
+elif platform == "darwin":
+    # OS X
+    # OS! OS! WHAT THE HELL!
+    #print('OS! OS! WHAT!?')
+    pass
+elif platform == "win32":
+    # Windows
+    #print('Using Windows')
+    FilesType = '\\'
+
+
+
 # this is a faster way to use the dictionary
 dictionary = {}
-for a in open('DictionaryLines.txt','r').readlines(): # main list
+for a in open(f'JTools{FilesType}DictionaryLines.txt','r').readlines(): # main list
     lst = a.split(':!!:') # achual stuffs
     if len(lst) > 1:
         dictionary[lst[0]] = [lst[1],lst[2][:-1]] # this overrights iself alot 
