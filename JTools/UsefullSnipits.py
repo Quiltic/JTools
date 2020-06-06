@@ -132,7 +132,7 @@ def spell_check_helper(word):
 
 
 
-def spellCheck(word):
+def spellCheck(word, dictionary = dictionary):
     '''
     This is used to give the spell checked word.
     Literaly a spell checker
