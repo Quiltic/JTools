@@ -31,7 +31,7 @@ dictionary = {}
 for a in open(f'{place}{FilesType}DictionaryLines.txt','r').readlines(): # main list
     lst = a.split(':!!:') # achual stuffs
     if len(lst) > 1:
-        dictionary[lst[0]] = [lst[1],lst[2][:-1]] # this overrights iself alot 
+        dictionary[lst[0].lower()] = [lst[1],lst[2][:-1]] # this overrights iself alot 
 #dictionary = Load('Dictionary')
 
 
@@ -140,7 +140,7 @@ def spellCheck(word, dictionary = dictionary):
     #stuff = spell_check_helper(word)
     for pos in spell_check_helper(word):
         try:
-            dictionary[pos.capitalize()] # we have a match
+            dictionary[pos.lower()] # we have a match
             return(pos.lower())
         except:
             pass
