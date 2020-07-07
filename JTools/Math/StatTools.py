@@ -55,3 +55,7 @@ if __name__ == "__main__":
     print(len(posabilitys(['a','b','c','d'],freinds)))
 
     print(((num*4)-1)*4)
+
+
+
+

@@ -136,11 +136,18 @@ def spellCheck(word, dictionary = dictionary):
     '''
     This is used to give the spell checked word.
     Literaly a spell checker
+    spellCheck('hell') gives 'hello'
+    spellCheck('hell', Some_Dict) gives something
+    
     '''
     #stuff = spell_check_helper(word)
-    for pos in spell_check_helper(word):
-        try:
-            dictionary[pos.lower()] # we have a match
-            return(pos.lower())
-        except:
-            pass
+    try:
+        dictionary[word.lower()] # the word is already correct : saves time
+    except:
+        for pos in spell_check_helper(word): # make a list of all items and go through
+            try:
+                dictionary[pos.lower()] # we have a match
+                return(pos.lower())
+            except:
+                pass
+    return(word.lower()) # the word is inside the thing or cannot be correctly spelled
